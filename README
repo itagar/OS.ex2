@@ -1,0 +1,69 @@
+itagar
+Itai Tagar (305392508)
+EX: 2
+
+
+FILES:
+	uthreads.cpp 	- The User-Thread Library implementation.
+	Thread.h 	- A class declaration for a Thread in the User-Thread Library.  
+	Thread.cpp 	- A class implementation for a Thread in the User-Thread Library.  
+	Makefile        - Makefile for this project.
+	README          - This file.
+
+
+REMARKS:
+	No Remarks.
+
+
+ANSWERS:
+	Theoretical Questions:
+	1. 	One possible usage for User-Level Threads is the ability to implement on
+		every operating system, even if the operatingf system does not support 
+		threads. Moreover, we can implement User-Level Threads on platforms which
+		not include operating systems at all.
+		This is due to the fact that User-Level Threads are an implementation in
+		the program itself and have nothing to do with the operating system,
+		the operating system does not aware to the fact that there are several 
+		threads running and from it's point of view it is a single process that runs.
+		In contrast to Kernel-Level Threads which are handled by the operating system
+		and thus it must depend on it in order to run properly.
+		
+	2. 	One of the advantages of creating a process instead of creating a Kernel-Level 
+		Thread is that different processes are protected from each other because they 
+		don't share any resources (unlike threads which share memory and address space...)
+		this can prevent for example race condition which can appear when using threads.
+		Another advantage of process over threads is the fact that changes of the main 
+		thread affect the behavior of the other threads of the process while changes to 
+		the parent process do not affect it's child processes.
+		A disadvantage of process over threads is that process requires a lot overhead
+		and all operations requires the operating system to handle it (i.e. kernel trap).
+		For example creation of a new thread can be acheived more easily then creation 
+		of a new process. Same for switching between processes and threads.
+		Furthermore, if processes wish to communicate with each other they must use 
+		interprocess communication (IPC) while threads can communicate with each other directly
+		(that's because of the resources they share) like using 'wait()' or 'notify()'...
+		Another disadvantage (which we also saw that it can reflect an advantage in some
+		cases) is that a thread can control and affect other threads of the same process
+		while process can only control over it's child processes.
+
+	3. 	a.	Opened Shotwell (pid 15877).
+		b. 	Done.
+		c. 	First the keyboard sends interrupt to the Shell to write 'kill 15877' and
+			perform it by pressing Enter. When pressing Enter and receiving this interrupt
+			the system perform the command that appered in the Sell (in our case it is 
+			'kill 15877'). The user function 'kill' perform system call to the 
+			function 'kill(15877, SIGTERM)' (trap).
+
+	4.	Real Time is the regular timer that counts down as we know it from life (Wall-Clock).
+		Virtual Time is the time that count only the actual time in which the process was running.
+		We would like to use Real Time for example in some Flight Booking program which should
+		be synchronized with the real time in the world and it's clock count should be as
+		the real count.
+		We would like to use Virtual Time for programs like games that counts time passed in the
+		game itself but ignore all the time of the overhead which passed but the CPU didn't perform
+		any action and thus the game should not continue to count when there wasn't a real progress
+		in computation.
+		
+		
+		
+		
